@@ -19,4 +19,5 @@
 
 ## 订阅地址
 
-`https://fastly.jsdelivr.net/gh/popeyelau/itv@main/merged.m3u`
+`https://raw.githubusercontent.com/popeyelau/itv/main/merged.m3u`
+`https://ghproxy.com/https://raw.githubusercontent.com/popeyelau/itv/main/merged.m3u`
