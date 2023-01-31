@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"bytes"
 	"fmt"
-	"github.com/jamesnetherton/m3u"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -13,7 +12,7 @@ import (
 	"time"
 )
 
-var groups map[string][]m3u.Track
+var groups map[string][]Track
 var trackUrls []string
 var keywords []string
 
@@ -39,13 +38,13 @@ func main() {
 	files := loadSource("source.txt")
 	keywords = loadSource("keywords.txt")
 
-	groups = map[string][]m3u.Track{}
+	groups = map[string][]Track{}
 	trackUrls = []string{}
 
 	wg := sync.WaitGroup{}
 	wg.Add(len(files))
 	for _, url := range files {
-		groups[url] = []m3u.Track{}
+		groups[url] = []Track{}
 		go func(url string) {
 			parse(url)
 			wg.Done()
@@ -56,12 +55,12 @@ func main() {
 }
 
 func parse(url string) {
-	playlist, err := m3u.Parse(url)
+	playlist, err := Parse(url)
 	if err != nil {
 		return
 	}
 
-	var tracks []m3u.Track
+	var tracks []Track
 	for _, track := range playlist.Tracks {
 		if filter(track) && !isRequested(track.URI) {
 			tracks = append(tracks, track)
@@ -75,7 +74,7 @@ func parse(url string) {
 	wg := sync.WaitGroup{}
 	wg.Add(len(tracks))
 	for _, track := range tracks {
-		go func(track m3u.Track) {
+		go func(track Track) {
 			trackUrls = append(trackUrls, track.URI)
 			if ping(track.URI) {
 				groups[url] = append(groups[url], track)
@@ -103,7 +102,7 @@ func ping(url string) bool {
 }
 
 func merge() {
-	var tracks []m3u.Track
+	var tracks []Track
 
 	for _, v := range groups {
 		if len(v) == 0 {
@@ -112,8 +111,8 @@ func merge() {
 		tracks = append(tracks, v...)
 	}
 
-	playlist := m3u.Playlist{Tracks: tracks}
-	reader, err := m3u.Marshall(playlist)
+	playlist := Playlist{Tracks: tracks}
+	reader, err := Marshall(playlist)
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -126,7 +125,7 @@ func merge() {
 	}
 }
 
-func filter(track m3u.Track) bool {
+func filter(track Track) bool {
 	var name, group string
 	for _, tag := range track.Tags {
 		if tag.Name == "group-title" {
