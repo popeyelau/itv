@@ -26,6 +26,14 @@ jobs:
       run: |
         chmod +x ./main
         ./main
+
+    - name: Commit
+      run: |
+        git config --local user.email "popeyelau@gmail.com"
+        git config --local user.name "Popeye Lau"
+        git pull
+        git add .
+        git commit -m "update merged.m3u"
       
     - name: Push changes
       uses: ad-m/github-push-action@master
