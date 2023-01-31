@@ -20,7 +20,12 @@ jobs:
         go-version: 1.19
 
     - name: Build
-      run: go run main.go
+      run: go build -o main main.go
+
+    - name: Generate m3u
+      run: |
+        chmod +x ./main
+        ./main
       
     - name: Push changes
       uses: ad-m/github-push-action@master

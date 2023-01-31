@@ -119,7 +119,7 @@ func merge() {
 		return
 	}
 	b := reader.(*bytes.Buffer)
-	_ = ioutil.WriteFile("merged.m3u", b.Bytes(), os.ModePerm)
+	_ = ioutil.WriteFile("./merged.m3u", b.Bytes(), os.ModePerm)
 	if err != nil {
 		fmt.Println(err)
 		return
