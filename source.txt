@@ -1,0 +1,2 @@
+https://fastly.jsdelivr.net/gh/fanmingming/live@main/tv/m3u/global.m3u
+https://ghproxy.com/https://raw.githubusercontent.com/whpsky/iptv/main/chinatv.m3u
