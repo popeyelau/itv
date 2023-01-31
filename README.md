@@ -1,1 +1,1 @@
-# itv
+https://fastly.jsdelivr.net/gh/popeyelau/itv@main/merged.m3u
