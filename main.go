@@ -12,6 +12,7 @@ import (
 	"time"
 )
 
+var s sync.RWMutex
 var groups map[string][]Track
 var trackUrls []string
 var keywords []string
@@ -77,7 +78,9 @@ func parse(url string) {
 		go func(track Track) {
 			trackUrls = append(trackUrls, track.URI)
 			if ping(track.URI) {
+				s.Lock()
 				groups[url] = append(groups[url], track)
+				s.Unlock()
 			}
 			wg.Done()
 		}(track)
@@ -97,7 +100,10 @@ func ping(url string) bool {
 	if err != nil {
 		return false
 	}
-	isValid := resp.StatusCode >= 200 && resp.StatusCode <= 299 || resp.StatusCode == 302
+
+	code := resp.StatusCode
+	isValid := (code >= 200 && code < 300) || code == 302
+
 	return isValid
 }
 
