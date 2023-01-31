@@ -1,2 +1,5 @@
 # M3U Merger
-https://fastly.jsdelivr.net/gh/popeyelau/itv@main/merged.m3u
+
+> 每 2 小时更新一次
+
+订阅地址 `https://fastly.jsdelivr.net/gh/popeyelau/itv@main/merged.m3u`
