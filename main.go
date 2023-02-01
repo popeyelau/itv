@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"bytes"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -16,23 +17,6 @@ var s sync.RWMutex
 var groups map[string][]Track
 var trackUrls []string
 var keywords []string
-
-func loadSource(path string) []string {
-	readFile, err := os.Open(path)
-	if err != nil {
-		fmt.Println(err)
-	}
-	fileScanner := bufio.NewScanner(readFile)
-	fileScanner.Split(bufio.ScanLines)
-	var files []string
-
-	for fileScanner.Scan() {
-		files = append(files, fileScanner.Text())
-	}
-
-	_ = readFile.Close()
-	return files
-}
 
 func main() {
 
@@ -89,22 +73,53 @@ func parse(url string) {
 }
 
 func ping(url string) bool {
-	client := &http.Client{
-		Timeout: 3 * time.Second,
-	}
-	req, err := http.NewRequest("HEAD", url, nil)
-	if err != nil {
-		return false
-	}
-	resp, err := client.Do(req)
+	resp, err := request(url, "HEAD", 3*time.Second, true)
 	if err != nil {
 		return false
 	}
 
 	code := resp.StatusCode
-	isValid := (code >= 200 && code < 300) || code == 302
+	isRedirect := code == 302
+	isValid := isValidRespCode(code)
+
+	if isRedirect {
+		location := resp.Header.Get("Location")
+		if len(location) == 0 {
+			return false
+		}
+
+		resp, err = request(location, "HEAD", 3*time.Second, false)
+		if err != nil {
+			return false
+		}
+		isValid = isValidRespCode(resp.StatusCode)
+	}
 
 	return isValid
+}
+
+func request(url string, method string, timeout time.Duration, checkRedirect bool) (*http.Response, error) {
+	client := &http.Client{
+		Timeout: timeout,
+		CheckRedirect: func(req *http.Request, via []*http.Request) error {
+			if checkRedirect {
+				return http.ErrUseLastResponse
+			}
+			if len(via) >= 10 {
+				return errors.New("stopped after 10 redirects")
+			}
+			return nil
+		},
+	}
+	req, err := http.NewRequest(method, url, nil)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := client.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	return resp, nil
 }
 
 func merge() {
@@ -155,4 +170,25 @@ func isRequested(url string) bool {
 		}
 	}
 	return false
+}
+
+func isValidRespCode(statusCode int) bool {
+	return (statusCode >= 200 && statusCode < 300) || statusCode == 302
+}
+
+func loadSource(path string) []string {
+	readFile, err := os.Open(path)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fileScanner := bufio.NewScanner(readFile)
+	fileScanner.Split(bufio.ScanLines)
+	var files []string
+
+	for fileScanner.Scan() {
+		files = append(files, fileScanner.Text())
+	}
+
+	_ = readFile.Close()
+	return files
 }
