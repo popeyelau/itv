@@ -1,2 +1,3 @@
 https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/global.m3u
 https://raw.githubusercontent.com/whpsky/iptv/main/chinatv.m3u
+https://telegram-feiyangdigital.v1.mk/gudou.m3u
