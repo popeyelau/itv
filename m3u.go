@@ -98,7 +98,7 @@ func Parse(fileName string) (Playlist, error) {
 				errors.New("URI provided for playlist with no tracks")
 
 		} else {
-			playlist.Tracks[len(playlist.Tracks)-1].URI = strings.Trim(line, " ")
+			playlist.Tracks[len(playlist.Tracks)-1].URI = strings.TrimSpace(line)
 		}
 	}
 

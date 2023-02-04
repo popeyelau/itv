@@ -79,21 +79,7 @@ func ping(url string) bool {
 	}
 
 	code := resp.StatusCode
-	isRedirect := code == 302
 	isValid := isValidRespCode(code)
-
-	if isRedirect {
-		location := resp.Header.Get("Location")
-		if len(location) == 0 {
-			return false
-		}
-
-		resp, err = request(location, "HEAD", 3*time.Second, false)
-		if err != nil {
-			return false
-		}
-		isValid = isValidRespCode(resp.StatusCode)
-	}
 
 	return isValid
 }

@@ -28,6 +28,7 @@ jobs:
       run: |
         chmod +x ./main
         ./main
+        rm main
 
     - name: Commit
       run: |
