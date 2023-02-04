@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"sort"
 	"strings"
 	"sync"
 	"time"
@@ -117,6 +118,10 @@ func merge() {
 		}
 		tracks = append(tracks, v...)
 	}
+
+	sort.Slice(tracks, func(i, j int) bool {
+		return tracks[i].Name < tracks[j].Name
+	})
 
 	playlist := Playlist{Tracks: tracks}
 	reader, err := Marshall(playlist)
