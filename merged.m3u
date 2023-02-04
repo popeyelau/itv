@@ -1,99 +1,93 @@
 #EXTM3U
-#EXTINF:-1 group-title="测试2", TVB翡翠华丽
-http://23.237.10.66:16410
-#EXTINF:-1 group-title="港澳台", 东森新闻美洲
-http://38.64.72.148:80/hls/modn/list/2015/chunklist0.m3u8
+#EXTINF:-1 group-title="测试2", 民视新闻HD
+http://38.64.72.148:80/hls/modn/list/4012/chunklist1.m3u8
+#EXTINF:-1 group-title="测试2", TVBS新闻
+http://38.64.72.148/hls/modn/list/4006/chunklist0.m3u8
+#EXTINF:-1 group-title="测试2", TVBS新闻
+http://38.64.72.148:80/hls/modn/list/4006/chunklist1.m3u8
+#EXTINF:-1 group-title="港澳台", TVBS新闻
+http://38.64.72.148:80/hls/modn/list/4006/chunklist0.m3u8
 #EXTINF:-1 group-title="港澳台", TVBS
 http://38.64.72.148:80/hls/modn/list/4005/chunklist0.m3u8
 #EXTINF:-1 group-title="港澳台", 台视新闻
+http://38.64.72.148:80/hls/modn/list/4013/chunklist1.m3u8
+#EXTINF:-1 group-title="港澳台", 东森新闻美洲
+http://38.64.72.148:80/hls/modn/list/2015/chunklist0.m3u8
+#EXTINF:-1 group-title="港澳台", 台视新闻
 http://38.64.72.148:80/hls/modn/list/4013/chunklist0.m3u8
-#EXTINF:-1 group-title="港澳台", TVBS新闻
-http://38.64.72.148:80/hls/modn/list/4006/chunklist0.m3u8
-#EXTINF:-1 group-title="测试2", TVBS新闻
-http://38.64.72.148:80/hls/modn/list/4006/chunklist1.m3u8
 #EXTINF:-1 group-title="港澳台", 民视新闻台
 http://38.64.72.148:80/hls/modn/list/4012/chunklist0.m3u8
-#EXTINF:-1 group-title="测试2", TVBS新闻
-http://38.64.72.148/hls/modn/list/4006/chunklist0.m3u8
-#EXTINF:-1 group-title="测试2", 民视新闻HD
-http://38.64.72.148:80/hls/modn/list/4012/chunklist1.m3u8
-#EXTINF:-1 group-title="港澳台", 台视新闻
-http://38.64.72.148:80/hls/modn/list/4013/chunklist1.m3u8
-#EXTINF:-1 group-title="测试7", 凤凰资讯
-http://playtv-live.ifeng.com:80/live/06OLEEWQKN4_tv2.m3u8
-#EXTINF:-1 group-title="测试7", 凤凰资讯
-http://playtv-live.ifeng.com/live/06OLEEWQKN4_tv2.m3u8
-#EXTINF:-1 group-title="测试频道", 凤凰中文
-http://playtv-live.ifeng.com/live/06OLEGEGM4G_tv1.m3u8
+#EXTINF:-1 group-title="测试2", TVB翡翠华丽
+http://23.237.10.66:16410
 #EXTINF:-1 group-title="测试4", 凤凰电影
 http://111.59.189.40:8445/tsfile/live/1022_1.m3u8?zgangd
-#EXTINF:-1 group-title="测试6", 凤凰中文
-http://111.59.189.40:8445/tsfile/live/1020_1.m3u8
+#EXTINF:-1 group-title="测试6", 凤凰资讯
+http://111.59.189.40:8445/tsfile/live/1021_1.m3u8
+#EXTINF:-1 group-title="测试7", 凤凰资讯
+http://playtv-live.ifeng.com/live/06OLEEWQKN4_tv2.m3u8
+#EXTINF:-1 group-title="测试7", 凤凰资讯
+http://playtv-live.ifeng.com:80/live/06OLEEWQKN4_tv2.m3u8
+#EXTINF:-1 group-title="港澳台", 香港卫视文旅
+https://myun-hw-s3.myun.tv/melj80jz/lxx27bol/1551285536499984128.m3u8
 #EXTINF:-1 group-title="测试7", 香港佛陀
 http://js1.amtb.cn/liveedge/_definst_/livetv/chunklist.m3u8
 #EXTINF:-1 group-title="电影频道", 凤凰电影
 http://111.59.189.40:8445/tsfile/live/1022_1.m3u8
-#EXTINF:-1 group-title="测试2", TVB J2
-https://j3.lhlh.app/mv.m3u8?checkedby:iptvcat.com
+#EXTINF:-1 group-title="测试6", 凤凰中文
+http://111.59.189.40:8445/tsfile/live/1020_1.m3u8
 #EXTINF:-1 group-title="测试2", TVB功夫台
 https://cn-hbyc2-dx-live-01.bilivideo.com/live-bvc/545768/live_179302204_68184269.m3u8
-#EXTINF:-1 group-title="港澳台", 香港卫视文旅
-https://myun-hw-s3.myun.tv/melj80jz/lxx27bol/1551285536499984128.m3u8
+#EXTINF:-1 group-title="测试频道", 凤凰中文
+http://playtv-live.ifeng.com/live/06OLEGEGM4G_tv1.m3u8
 #EXTINF:-1 group-title="测试7", 香港佛陀
 https://js1.amtb.cn/liveedge/_definst_/livetv/playlist.m3u8
-#EXTINF:-1 group-title="港澳台" tvg-logo="https://live.fanmingming.com/tv/fenghuangzhongwen.png", 凤凰中文
-http://playtv-live.ifeng.com/live/06OLEGEGM4G.m3u8
+#EXTINF:-1 group-title="测试2", TVB J2
+https://j3.lhlh.app/mv.m3u8?checkedby:iptvcat.com
 #EXTINF:-1 group-title="港澳台" tvg-logo="https://live.fanmingming.com/tv/fenghuangzhongwen.png", 凤凰中文
 http://playtv-live.ifeng.com:80/live/06OLEGEGM4G.m3u8
 #EXTINF:-1 group-title="港澳台" tvg-logo="https://live.fanmingming.com/tv/fenghuangzhongwen.png", 凤凰中文
 https://playtv-live.ifeng.com/live/06OLEGEGM4G.m3u8
-#EXTINF:-1 group-title="港澳台" tvg-logo="https://live.fanmingming.com/tv/fenghuangzixun.png", 凤凰资讯
-http://playtv-live.ifeng.com/live/06OLEEWQKN4.m3u8
+#EXTINF:-1 group-title="港澳台" tvg-logo="https://live.fanmingming.com/tv/fenghuangzhongwen.png", 凤凰中文
+http://playtv-live.ifeng.com/live/06OLEGEGM4G.m3u8
 #EXTINF:-1 group-title="港澳台" tvg-logo="https://live.fanmingming.com/tv/fenghuangzixun.png", 凤凰资讯
 http://playtv-live.ifeng.com:80/live/06OLEEWQKN4.m3u8
 #EXTINF:-1 group-title="港澳台" tvg-logo="https://live.fanmingming.com/tv/fenghuangzixun.png", 凤凰资讯
 https://playtv-live.ifeng.com/live/06OLEEWQKN4.m3u8
-#EXTINF:-1 tvg-id="三立NEWS+" tvg-name="三立NEWS+" tvg-logo="https://epg.112114.xyz/logo/三立NEWS+.png" group-title="台湾", 三立NEWS+
-https://raw.githubusercontent.com/etag2000/IPTV/YTlive/setlive.m3u8
-#EXTINF:-1 tvg-id="港台電視32" tvg-name="港台電視32" tvg-logo="https://epg.112114.xyz/logo/港台電視32.png" group-title="香港", 港台電視32
-http://2022.stream-link.org/playlist/rthk_32
-#EXTINF:-1 tvg-id="港台電視31" tvg-name="港台電視31" tvg-logo="https://epg.112114.xyz/logo/港台電視31.png" group-title="香港", 港台電視31
-http://2022.stream-link.org/playlist/rthk_31
-#EXTINF:-1 tvg-id="民视新闻台" tvg-name="民视新闻台" tvg-logo="https://epg.112114.xyz/logo/民视新闻台.png" group-title="台湾", 民视新闻
-http://38.64.72.148:80/hls/modn/list/4012/chunklist1.m3u8
-#EXTINF:-1 tvg-id="TVBS新闻台" tvg-name="TVBS新闻台" tvg-logo="https://epg.112114.xyz/logo/TVBS新闻台.png" group-title="台湾", TVBS新闻
-http://38.64.72.148:80/hls/modn/list/4006/chunklist1.m3u8
-#EXTINF:-1 tvg-id="台视新闻台" tvg-name="台视新闻台" tvg-logo="https://epg.112114.xyz/logo/台视新闻台.png" group-title="台湾", 台视新闻
-http://38.64.72.148:80/hls/modn/list/4013/chunklist0.m3u8
+#EXTINF:-1 group-title="港澳台" tvg-logo="https://live.fanmingming.com/tv/fenghuangzixun.png", 凤凰资讯
+http://playtv-live.ifeng.com/live/06OLEEWQKN4.m3u8
 #EXTINF:-1 tvg-id="TVBS" tvg-name="TVBS" tvg-logo="https://epg.112114.xyz/logo/TVBS.png" group-title="台湾", TVBS亚洲
 http://38.64.72.148/hls/modn/list/4005/chunklist1.m3u8
-#EXTINF:-1 tvg-id="TVBS新闻台" tvg-name="TVBS新闻台" tvg-logo="https://epg.112114.xyz/logo/TVBS新闻台.png" group-title="台湾", TVBS新闻
-http://38.64.72.148/hls/modn/list/4006/chunklist0.m3u8
+#EXTINF:-1 tvg-id="中天新闻" tvg-name="中天新闻" tvg-logo="https://epg.112114.xyz/logo/中天新闻.png" group-title="台湾", 中天新闻
+http://2023.stream-link.org/playlist/cti_news
+#EXTINF:-1 tvg-id="三立NEWS+" tvg-name="三立NEWS+" tvg-logo="https://epg.112114.xyz/logo/三立NEWS+.png" group-title="台湾", 三立NEWS+
+https://raw.githubusercontent.com/etag2000/IPTV/YTlive/setlive.m3u8
+#EXTINF:-1 tvg-id="港台電視31" tvg-name="港台電視31" tvg-logo="https://epg.112114.xyz/logo/港台電視31.png" group-title="香港", 港台電視31
+http://2022.stream-link.org/playlist/rthk_31
 #EXTINF:-1 tvg-id="有线新闻台" tvg-name="有线新闻台" tvg-logo="https://epg.112114.xyz/logo/有线新闻台.png" group-title="香港", 有线新闻
 http://61.10.2.140:80/live_freedirect/freehd209_h.live/chunklist_w135209556.m3u8
-#EXTINF:-1 tvg-id="TVBS新闻台" tvg-name="TVBS新闻台" tvg-logo="https://epg.112114.xyz/logo/TVBS新闻台.png" group-title="台湾", TVBS新闻
-http://www.336699.live:1935/blocksix/4gtv-live072.stream/chunklist.m3u8
-#EXTINF:-1 tvg-id="三立INEWS" tvg-name="三立INEWS" tvg-logo="https://epg.112114.xyz/logo/三立INEWS.png" group-title="台湾", 三立INEWS
-http://www.336699.live:1935/blocksix/4gtv-live089.stream/chunklist.m3u8
-#EXTINF:-1 tvg-id="中视新闻" tvg-name="中视新闻" tvg-logo="https://epg.112114.xyz/logo/中视新闻.png" group-title="台湾", 中视新闻
-http://www.336699.live:1935/blockfour/4gtv-4gtv074.stream/playlist.m3u8
-#EXTINF:-1 tvg-id="華視新聞資訊" tvg-name="華視新聞資訊" tvg-logo="https://epg.112114.xyz/logo/華視新聞資訊.png" group-title="台湾", 華視新聞資訊
-http://www.336699.live:1935/blockfour/4gtv-4gtv052.stream/playlist.m3u8
-#EXTINF:-1 tvg-id="东森新闻台" tvg-name="东森新闻台" tvg-logo="https://epg.112114.xyz/logo/东森新闻台.png" group-title="台湾", 东森新闻
-http://www.336699.live:1935/blocksix/4gtv-live114.stream/chunklist.m3u8
-#EXTINF:-1 tvg-id="台视新闻台" tvg-name="台视新闻台" tvg-logo="https://epg.112114.xyz/logo/台视新闻台.png" group-title="台湾", 台视新闻
-http://www.336699.live:1935/blocksix/4gtv-live114.stream/chunklist.m3u8
-#EXTINF:-1 tvg-id="TVBS" tvg-name="TVBS" tvg-logo="https://epg.112114.xyz/logo/TVBS.png" group-title="台湾", TVBSHD
-http://www.336699.live:1935/blockfour/4gtv-4gtv073.stream/playlist.m3u8
+#EXTINF:-1 tvg-id="有线新闻台" tvg-name="有线新闻台" tvg-logo="https://epg.112114.xyz/logo/有线新闻台.png" group-title="香港", 有线新闻
+http://cm61-10-2-143.hkcable.com.hk/live_freedirect/freehd209_h.live/playlist.m3u8
 #EXTINF:-1 tvg-id="三立NEWS+" tvg-name="三立NEWS+" tvg-logo="https://epg.112114.xyz/logo/三立NEWS+.png" group-title="台湾", 三立NEWS+
 https://ytm2.yuanhsing.cf/SETLIVE.m3u8
+#EXTINF:-1 tvg-id="凤凰中文" tvg-name="凤凰中文" tvg-logo="https://epg.112114.xyz/logo/凤凰中文.png" group-title="香港", 凤凰中文
+http://play-live.ifeng.com/live/06OLEGEGM4G.m3u8
 #EXTINF:-1 tvg-id="凤凰资讯" tvg-name="凤凰资讯" tvg-logo="https://epg.112114.xyz/logo/凤凰资讯.png" group-title="香港", 凤凰资讯
 http://play-live.ifeng.com/live/06OLEEWQKN4.m3u8
 #EXTINF:-1 tvg-id="香港面包台" tvg-name="香港面包台" tvg-logo="https://epg.112114.xyz/logo/香港面包台.png" group-title="香港", 香港面包台
 https://video.bread-tv.com:8091/hls-live24/online/index.m3u8
+#EXTINF:-1 tvg-id="三立INEWS" tvg-name="三立INEWS" tvg-logo="https://epg.112114.xyz/logo/三立INEWS.png" group-title="台湾", 三立INEWS
+http://www.336699.live:1935/blocksix/4gtv-live089.stream/chunklist.m3u8
+#EXTINF:-1 tvg-id="TVBS" tvg-name="TVBS" tvg-logo="https://epg.112114.xyz/logo/TVBS.png" group-title="台湾", TVBSHD
+http://www.336699.live:1935/blockfour/4gtv-4gtv073.stream/playlist.m3u8
+#EXTINF:-1 tvg-id="華視新聞資訊" tvg-name="華視新聞資訊" tvg-logo="https://epg.112114.xyz/logo/華視新聞資訊.png" group-title="台湾", 華視新聞資訊
+http://www.336699.live:1935/blockfour/4gtv-4gtv052.stream/playlist.m3u8
+#EXTINF:-1 tvg-id="中视新闻" tvg-name="中视新闻" tvg-logo="https://epg.112114.xyz/logo/中视新闻.png" group-title="台湾", 中视新闻
+http://www.336699.live:1935/blockfour/4gtv-4gtv074.stream/playlist.m3u8
 #EXTINF:-1 tvg-id="无线新闻" tvg-name="无线新闻" tvg-logo="https://epg.112114.xyz/logo/无线新闻.png" group-title="香港", 无线新闻
 https://cdn.hklive.tv/xxxx/83/index.m3u8
-#EXTINF:-1 tvg-id="有线新闻台" tvg-name="有线新闻台" tvg-logo="https://epg.112114.xyz/logo/有线新闻台.png" group-title="香港", 有线新闻
-http://cm61-10-2-143.hkcable.com.hk/live_freedirect/freehd209_h.live/playlist.m3u8
-#EXTINF:-1 tvg-id="凤凰中文" tvg-name="凤凰中文" tvg-logo="https://epg.112114.xyz/logo/凤凰中文.png" group-title="香港", 凤凰中文
-http://play-live.ifeng.com/live/06OLEGEGM4G.m3u8
+#EXTINF:-1 tvg-id="台视新闻台" tvg-name="台视新闻台" tvg-logo="https://epg.112114.xyz/logo/台视新闻台.png" group-title="台湾", 台视新闻
+http://www.336699.live:1935/blocksix/4gtv-live114.stream/chunklist.m3u8
+#EXTINF:-1 tvg-id="东森新闻台" tvg-name="东森新闻台" tvg-logo="https://epg.112114.xyz/logo/东森新闻台.png" group-title="台湾", 东森新闻
+http://www.336699.live:1935/blocksix/4gtv-live114.stream/chunklist.m3u8
+#EXTINF:-1 tvg-id="TVBS新闻台" tvg-name="TVBS新闻台" tvg-logo="https://epg.112114.xyz/logo/TVBS新闻台.png" group-title="台湾", TVBS新闻
+http://www.336699.live:1935/blocksix/4gtv-live072.stream/chunklist.m3u8
