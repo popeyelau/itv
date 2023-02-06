@@ -1,6 +1,7 @@
 #sub.yaml
 - group: '港澳台'
   urls:
+    - "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/global.m3u"
+    - "https://raw.githubusercontent.com/whpsky/iptv/main/chinatv.m3u"
     - "https://telegram-feiyangdigital.v1.mk/gudou.m3u"
-    - "https://ghproxy.com/https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/global.m3u"
   keywords: "discovery,viu,tvb,hbo,eleven,香港,台湾,中天,东森,東森,纬来,緯來,靖天,八大,台视,臺視,寰宇,寰宇,博斯,龙华,龍華,影迷,爱尔达,愛爾達,中天,年代,民视,民視,翡翠,凤凰,鳳凰,星卫,星衛,臺灣" #
