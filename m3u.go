@@ -32,6 +32,29 @@ type Track struct {
 	Tags   []Tag
 }
 
+func (m *Track) buildTags(group *Group) {
+	var logo string
+	for _, tag := range m.Tags {
+		if tag.Name == "tvg-logo" {
+			logo = tag.Value
+		}
+	}
+	m.Tags = []Tag{
+		{
+			Name:  "group-title",
+			Value: group.Group,
+		},
+		{
+			Name:  "tvg-name",
+			Value: m.Name,
+		},
+		{
+			Name:  "tvg-logo",
+			Value: logo,
+		},
+	}
+}
+
 // Parse parses an m3u playlist with the given file name and returns a Playlist
 func Parse(fileName string) (Playlist, error) {
 	var f io.ReadCloser

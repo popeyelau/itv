@@ -1,10 +1,10 @@
 package main
 
 import (
-	"bufio"
 	"bytes"
 	"errors"
 	"fmt"
+	"gopkg.in/yaml.v3"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -14,63 +14,94 @@ import (
 	"time"
 )
 
-var s sync.RWMutex
-var groups map[string][]Track
 var trackUrls []string
-var keywords []string
+var confs []*Group
+
+type Group struct {
+	Group    string   `yaml:"group"`
+	Urls     []string `yaml:"urls"`
+	Keywords string   `yaml:"keywords"`
+	Track    []Track
+}
 
 func main() {
 
-	files := loadSource("source.txt")
-	keywords = loadSource("keywords.txt")
-
-	groups = map[string][]Track{}
-	trackUrls = []string{}
-
-	wg := sync.WaitGroup{}
-	wg.Add(len(files))
-	for _, url := range files {
-		groups[url] = []Track{}
-		go func(url string) {
-			parse(url)
-			wg.Done()
-		}(url)
+	data, err := ioutil.ReadFile("sub.yaml")
+	if err != nil {
+		fmt.Printf("err: %v\n", err)
+		return
 	}
-	wg.Wait()
-	merge()
-}
-
-func parse(url string) {
-	playlist, err := Parse(url)
+	err = yaml.Unmarshal(data, &confs)
 	if err != nil {
 		return
 	}
 
+	trackUrls = []string{}
+
+	c := make(chan *Playlist)
+
+	go func() {
+		defer close(c)
+		for _, conf := range confs {
+			parseGroup(c, conf)
+		}
+	}()
+
+	for {
+		_, more := <-c
+		if !more {
+			merge()
+			break
+		}
+	}
+}
+
+func parseGroup(ch chan<- *Playlist, group *Group) {
+	wg := sync.WaitGroup{}
+	wg.Add(len(group.Urls))
+	for _, url := range group.Urls {
+		go func(url string) {
+			defer wg.Done()
+			playlist, _ := parse(url, group)
+			if playlist != nil {
+				ch <- playlist
+			}
+		}(url)
+	}
+	wg.Wait()
+}
+
+func parse(url string, group *Group) (*Playlist, error) {
+	playlist, err := Parse(url)
+	if err != nil {
+		return nil, err
+	}
+
 	var tracks []Track
 	for _, track := range playlist.Tracks {
-		if filter(track) && !isRequested(track.URI) {
+		if filter(track, group) && !isRequested(track.URI) {
 			tracks = append(tracks, track)
 		}
 	}
 
 	if len(tracks) == 0 {
-		return
+		return nil, err
 	}
 
 	wg := sync.WaitGroup{}
 	wg.Add(len(tracks))
 	for _, track := range tracks {
 		go func(track Track) {
+			defer wg.Done()
 			trackUrls = append(trackUrls, track.URI)
 			if ping(track.URI) {
-				s.Lock()
-				groups[url] = append(groups[url], track)
-				s.Unlock()
+				track.buildTags(group)
+				group.Track = append(group.Track, track)
 			}
-			wg.Done()
 		}(track)
 	}
 	wg.Wait()
+	return &playlist, nil
 }
 
 func ping(url string) bool {
@@ -112,15 +143,12 @@ func request(url string, method string, timeout time.Duration, checkRedirect boo
 func merge() {
 	var tracks []Track
 
-	for _, v := range groups {
-		if len(v) == 0 {
-			continue
-		}
-		tracks = append(tracks, v...)
+	for _, v := range confs {
+		tracks = append(tracks, v.Track...)
 	}
 
 	sort.Slice(tracks, func(i, j int) bool {
-		return tracks[i].Name < tracks[j].Name
+		return strings.TrimSpace(tracks[i].Name) < strings.TrimSpace(tracks[j].Name)
 	})
 
 	playlist := Playlist{Tracks: tracks}
@@ -137,7 +165,7 @@ func merge() {
 	}
 }
 
-func filter(track Track) bool {
+func filter(track Track, conf *Group) bool {
 	var name, group string
 	for _, tag := range track.Tags {
 		if tag.Name == "group-title" {
@@ -145,6 +173,7 @@ func filter(track Track) bool {
 		}
 	}
 	name = strings.ToLower(track.Name)
+	keywords := strings.Split(conf.Keywords, ",")
 
 	for _, keyword := range keywords {
 		if strings.Contains(name, keyword) || strings.Contains(group, keyword) {
@@ -165,21 +194,4 @@ func isRequested(url string) bool {
 
 func isValidRespCode(statusCode int) bool {
 	return (statusCode >= 200 && statusCode < 300) || statusCode == 302
-}
-
-func loadSource(path string) []string {
-	readFile, err := os.Open(path)
-	if err != nil {
-		fmt.Println(err)
-	}
-	fileScanner := bufio.NewScanner(readFile)
-	fileScanner.Split(bufio.ScanLines)
-	var files []string
-
-	for fileScanner.Scan() {
-		files = append(files, fileScanner.Text())
-	}
-
-	_ = readFile.Close()
-	return files
 }
