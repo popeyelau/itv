@@ -38,43 +38,35 @@ func main() {
 
 	trackUrls = []string{}
 
-	c := make(chan *Playlist)
-
-	go func() {
-		defer close(c)
-		for _, conf := range confs {
-			parseGroup(c, conf)
-		}
-	}()
-
-	for {
-		_, more := <-c
-		if !more {
-			merge()
-			break
-		}
+	wg := sync.WaitGroup{}
+	wg.Add(len(confs))
+	for _, conf := range confs {
+		go func(conf *Group) {
+			defer wg.Done()
+			parseConf(conf)
+		}(conf)
 	}
+	wg.Wait()
+	merge()
 }
 
-func parseGroup(ch chan<- *Playlist, group *Group) {
+func parseConf(conf *Group) {
 	wg := sync.WaitGroup{}
-	wg.Add(len(group.Urls))
-	for _, url := range group.Urls {
+	wg.Add(len(conf.Urls))
+	for _, url := range conf.Urls {
 		go func(url string) {
 			defer wg.Done()
-			playlist, _ := parse(url, group)
-			if playlist != nil {
-				ch <- playlist
-			}
+			parseM3u(url, conf)
 		}(url)
 	}
 	wg.Wait()
 }
 
-func parse(url string, group *Group) (*Playlist, error) {
+func parseM3u(url string, group *Group) {
 	playlist, err := Parse(url)
 	if err != nil {
-		return nil, err
+		fmt.Println(err)
+		return
 	}
 
 	var tracks []Track
@@ -85,7 +77,8 @@ func parse(url string, group *Group) (*Playlist, error) {
 	}
 
 	if len(tracks) == 0 {
-		return nil, err
+		fmt.Println("no channels")
+		return
 	}
 
 	wg := sync.WaitGroup{}
@@ -101,7 +94,6 @@ func parse(url string, group *Group) (*Playlist, error) {
 		}(track)
 	}
 	wg.Wait()
-	return &playlist, nil
 }
 
 func ping(url string) bool {
