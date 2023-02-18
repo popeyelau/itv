@@ -1,5 +1,9 @@
-module m3u_merger
+module itv
 
 go 1.18
 
-require gopkg.in/yaml.v3 v3.0.1 // indirect
+require (
+	github.com/dlclark/regexp2 v1.8.0
+	github.com/etherlabsio/go-m3u8 v1.0.0
+	gopkg.in/yaml.v2 v2.4.0
+)
